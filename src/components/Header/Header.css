@@ -1,0 +1,132 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 44px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Left Section */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-icon {
+  color: #2563eb;
+}
+
+.header-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.header-divider {
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+  margin: 0 2px;
+}
+
+/* Template Selector */
+.template-selector {
+  display: flex;
+  align-items: center;
+}
+
+.template-select {
+  appearance: none;
+  padding: 4px 22px 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 6px center;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  min-width: 80px;
+}
+
+.template-select:hover {
+  border-color: #9ca3af;
+}
+
+.template-select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Actions Section */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #fff;
+  color: #4b5563;
+}
+
+.action-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+.action-btn-primary {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.action-btn-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.action-btn-danger {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.action-btn-danger:hover {
+  background: #fecaca;
+  border-color: #f87171;
+}
+
+.auto-save-tip {
+  font-size: 12px;
+  color: #22c55e;
+  margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .header {
+    padding: 0 12px;
+  }
+
+  .header-title {
+    display: none;
+  }
+
+  .action-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}

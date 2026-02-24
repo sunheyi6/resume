@@ -1,0 +1,91 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-secondary);
+}
+
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.editor-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.editor-hint {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tool-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: #fff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tool-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.tool-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tool-btn-primary {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.tool-btn-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.editor-textarea {
+  flex: 1;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  resize: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #374151;
+  background: #fff;
+}
+
+.editor-textarea:focus {
+  outline: none;
+}
+
+.editor-textarea::placeholder {
+  color: #9ca3af;
+}
