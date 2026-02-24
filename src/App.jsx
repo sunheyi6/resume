@@ -69,6 +69,7 @@ function App() {
         selectedTemplate={selectedTemplate}
         onTemplateChange={setSelectedTemplate}
         markdown={markdown}
+        autoSave={true}
       />
       <div className="main-content" ref={containerRef}>
         <div 
