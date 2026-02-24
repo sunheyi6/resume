@@ -8,15 +8,26 @@
 .preview-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 8px 12px;
   background: #f9fafb;
   border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
 }
 
 .preview-label {
   font-size: 13px;
   font-weight: 500;
   color: #374151;
+}
+
+.fit-badge {
+  font-size: 11px;
+  font-weight: 500;
+  color: #667eea;
+  padding: 2px 8px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 10px;
 }
 
 .preview-content {
@@ -32,22 +43,17 @@
   margin: 0 auto;
   padding: 40px 48px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  
+  /* CSS变量默认值 */
+  --resume-scale: 1;
+  --resume-font-base: 14px;
+  --resume-line-height: 1.6;
+  --resume-spacing: 1;
 }
 
-@media print {
-  .preview-header {
-    display: none;
-  }
-  
-  .preview-content {
-    padding: 0;
-    background: #fff;
-  }
-  
-  .resume-page {
-    box-shadow: none;
-    padding: 20px 24px;
-    max-width: none;
-    min-height: auto;
-  }
+/* 智能适配样式 */
+.resume-page.fit-page-1,
+.resume-page.fit-page-2 {
+  font-size: var(--resume-font-base);
 }

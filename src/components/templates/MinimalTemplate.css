@@ -1,48 +1,69 @@
 .minimal-template {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #1a1a1a;
-  line-height: 1.7;
-  font-size: 14px;
+  
+  /* CSS 变量 - 默认 */
+  --base-font: 14px;
+  --h1-size: 26px;
+  --h2-size: 12px;
+  --h3-size: 15px;
+  --body-size: 14px;
+  --line-height: 1.7;
+  --space-xs: 3px;
+  --space-sm: 6px;
+  --space-md: 10px;
+  --space-lg: 14px;
+  --space-xl: 20px;
+  
+  font-size: var(--base-font);
+  line-height: var(--line-height);
+  transition: all 0.3s ease;
 }
 
 .minimal-template h1 {
-  font-size: 26px;
+  font-size: var(--h1-size);
   font-weight: 500;
   color: #1a1a1a;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.3px;
+  transition: all 0.3s ease;
 }
 
 .minimal-template h1 + p {
   text-align: center;
   color: #6b7280;
-  font-size: 13px;
-  margin-bottom: 24px;
+  font-size: calc(var(--base-font) * 0.9);
+  margin-bottom: var(--space-xl);
+  transition: all 0.3s ease;
 }
 
 .minimal-template h2 {
-  font-size: 12px;
+  font-size: var(--h2-size);
   font-weight: 600;
   color: #1a1a1a;
-  margin-top: 24px;
-  margin-bottom: 12px;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  transition: all 0.3s ease;
 }
 
 .minimal-template h3 {
-  font-size: 14px;
+  font-size: var(--h3-size);
   font-weight: 500;
   color: #1a1a1a;
-  margin-top: 14px;
-  margin-bottom: 6px;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xs);
+  transition: all 0.3s ease;
 }
 
 .minimal-template p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #4a5568;
-  margin-bottom: 10px;
+  font-size: var(--body-size);
+  line-height: var(--line-height);
+  color: #555;
+  margin-bottom: var(--space-sm);
+  transition: all 0.3s ease;
 }
 
 .minimal-template strong {
@@ -53,21 +74,24 @@
 .minimal-template ul,
 .minimal-template ol {
   margin-left: 0;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-sm);
   padding-left: 18px;
+  transition: all 0.3s ease;
 }
 
 .minimal-template li {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #4a5568;
-  margin-bottom: 3px;
+  font-size: var(--body-size);
+  line-height: var(--line-height);
+  color: #555;
+  margin-bottom: var(--space-xs);
+  transition: all 0.3s ease;
 }
 
 .minimal-template hr {
   border: none;
   border-top: 1px solid #e5e7eb;
-  margin: 20px 0;
+  margin: var(--space-xl) 0;
+  transition: all 0.3s ease;
 }
 
 .minimal-template em {
@@ -80,7 +104,7 @@
   padding: 2px 5px;
   border-radius: 3px;
   font-family: monospace;
-  font-size: 13px;
+  font-size: calc(var(--base-font) * 0.85);
   color: #6b7280;
 }
 
@@ -91,4 +115,23 @@
 
 .minimal-template a:hover {
   text-decoration: underline;
+}
+
+@media print {
+  .minimal-template {
+    font-size: 11pt;
+  }
+  
+  .minimal-template h1 {
+    font-size: 18pt;
+  }
+  
+  .minimal-template h2 {
+    font-size: 9pt;
+  }
+  
+  .minimal-template p,
+  .minimal-template li {
+    font-size: 11pt;
+  }
 }

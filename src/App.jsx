@@ -15,12 +15,38 @@ function App() {
   const [selectedTemplate, setSelectedTemplate] = useState('modern')
   const [editorWidth, setEditorWidth] = useState(60)
   const [isResizing, setIsResizing] = useState(false)
+  const [fitPage, setFitPage] = useState(null) // null, 1, or 2
   const containerRef = useRef(null)
-  const [syncScroll, setSyncScroll] = useState(true)
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, markdown)
   }, [markdown])
+
+  // 智能适配页面 - 应用 CSS 变量到 resume-page
+  const handleFitPage = useCallback((targetPages) => {
+    setFitPage(targetPages)
+    
+    // 显示提示
+    const message = targetPages === 1 ? '已智能适配为1页' : '已智能适配为2页'
+    const toast = document.createElement('div')
+    toast.textContent = message
+    toast.style.cssText = `
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      z-index: 10000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: fadeInOut 2s ease forwards;
+    `
+    document.body.appendChild(toast)
+    setTimeout(() => toast.remove(), 2000)
+  }, [])
 
   const handleMouseDown = useCallback(() => {
     setIsResizing(true)
@@ -43,21 +69,6 @@ function App() {
     }
   }, [isResizing])
 
-  const handleScroll = useCallback((scrollTop, source) => {
-    if (!syncScroll) return
-    
-    const editorEl = document.querySelector('.editor-textarea')
-    const previewEl = document.querySelector('.preview-content')
-    
-    if (!editorEl || !previewEl) return
-    
-    if (source === 'editor') {
-      previewEl.scrollTop = scrollTop
-    } else {
-      editorEl.scrollTop = scrollTop
-    }
-  }, [syncScroll])
-
   return (
     <div 
       className="app"
@@ -70,6 +81,8 @@ function App() {
         onTemplateChange={setSelectedTemplate}
         markdown={markdown}
         autoSave={true}
+        onFitPage={handleFitPage}
+        fitPage={fitPage}
       />
       <div className="main-content" ref={containerRef}>
         <div 
@@ -79,8 +92,6 @@ function App() {
           <Editor 
             value={markdown}
             onChange={setMarkdown}
-            onScroll={handleScroll}
-            syncScroll={syncScroll}
           />
         </div>
         
@@ -104,11 +115,19 @@ function App() {
           <Preview 
             markdown={markdown}
             template={selectedTemplate}
-            onScroll={handleScroll}
-            syncScroll={syncScroll}
+            fitPage={fitPage}
           />
         </div>
       </div>
+      
+      <style>{`
+        @keyframes fadeInOut {
+          0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+          20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+          80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+          100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+      `}</style>
     </div>
   )
 }

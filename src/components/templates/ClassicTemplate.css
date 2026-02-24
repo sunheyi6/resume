@@ -1,50 +1,72 @@
 .classic-template {
   font-family: Georgia, 'Times New Roman', serif;
   color: #1a1a1a;
-  line-height: 1.6;
-  font-size: 14px;
+  
+  /* CSS 变量 - 默认 */
+  --base-font: 14px;
+  --h1-size: 26px;
+  --h2-size: 14px;
+  --h3-size: 15px;
+  --body-size: 13px;
+  --line-height: 1.7;
+  --space-xs: 3px;
+  --space-sm: 6px;
+  --space-md: 10px;
+  --space-lg: 14px;
+  --space-xl: 16px;
+  
+  font-size: var(--base-font);
+  line-height: var(--line-height);
+  transition: all 0.3s ease;
 }
 
 .classic-template h1 {
-  font-size: 26px;
+  font-size: var(--h1-size);
   font-weight: 600;
   color: #1a1a1a;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-lg);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
 }
 
 .classic-template h1 + p {
   text-align: center;
   color: #4a5568;
-  font-size: 13px;
-  margin-bottom: 20px;
+  font-size: calc(var(--base-font) * 0.9);
+  margin-bottom: var(--space-xl);
+  transition: all 0.3s ease;
 }
 
 .classic-template h2 {
-  font-size: 14px;
+  font-size: var(--h2-size);
   font-weight: 600;
   color: #1a1a1a;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  padding-bottom: 4px;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
   border-bottom: 2px solid #1a1a1a;
   text-transform: uppercase;
   letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
 .classic-template h3 {
-  font-size: 14px;
+  font-size: var(--h3-size);
   font-weight: 600;
   color: #333;
-  margin-top: 14px;
-  margin-bottom: 6px;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xs);
+  transition: all 0.3s ease;
 }
 
 .classic-template p {
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: var(--body-size);
+  line-height: var(--line-height);
   color: #4a5568;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-xs);
+  transition: all 0.3s ease;
 }
 
 .classic-template strong {
@@ -55,25 +77,28 @@
 .classic-template ul,
 .classic-template ol {
   margin-left: 0;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-sm);
   padding-left: 18px;
+  transition: all 0.3s ease;
 }
 
 .classic-template li {
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: var(--body-size);
+  line-height: var(--line-height);
   color: #4a5568;
-  margin-bottom: 3px;
+  margin-bottom: var(--space-xs);
+  transition: all 0.3s ease;
 }
 
 .classic-template hr {
   border: none;
   border-top: 1px solid #ddd;
-  margin: 16px 0;
+  margin: var(--space-lg) 0;
+  transition: all 0.3s ease;
 }
 
 .classic-template em {
-  color: #6b7280;
+  color: #718096;
   font-style: italic;
 }
 
@@ -82,7 +107,7 @@
   padding: 2px 5px;
   border-radius: 3px;
   font-family: monospace;
-  font-size: 12px;
+  font-size: calc(var(--base-font) * 0.85);
   color: #666;
 }
 
@@ -93,4 +118,30 @@
 
 .classic-template a:hover {
   text-decoration: underline;
+}
+
+@media print {
+  .classic-template {
+    font-size: 11pt;
+  }
+  
+  .classic-template h1 {
+    font-size: 18pt;
+    margin-bottom: 12pt;
+  }
+  
+  .classic-template h2 {
+    font-size: 11pt;
+    margin-top: 14pt;
+    margin-bottom: 10pt;
+  }
+  
+  .classic-template h3 {
+    font-size: 11pt;
+  }
+  
+  .classic-template p,
+  .classic-template li {
+    font-size: 10pt;
+  }
 }
